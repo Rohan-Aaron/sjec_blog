@@ -69,6 +69,8 @@
                 <!-- Footer Start -->
                 @include('includes.footer')
                 <!-- Footer End -->
+                @include('sweetalert::alert')
+
             </div>
         </div>
     </div>
@@ -79,6 +81,7 @@
     <script src={{ asset('js/app.min.js') }}></script>
     <script src={{ asset('libs/apexcharts/dist/apexcharts.min.js') }}></script>
     <script src={{ asset('libs/simplebar/dist/simplebar.js') }}></script>
+    
 </body>
 
 </html>

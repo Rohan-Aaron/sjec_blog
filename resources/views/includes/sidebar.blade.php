@@ -29,13 +29,13 @@
                 </a>
                 <ul class="collapse ms-5" id="managementSubmenu">
                     <li class="sidebar-item">
-                        <a href="./users.html" class="sidebar-link">Users</a>
+                        <a href="{{route('admins.index')}}" class="sidebar-link">Users</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="./roles.html" class="sidebar-link">Roles</a>
+                        <a href="{{route('roles.index')}}" class="sidebar-link">Roles</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="./roles.html" class="sidebar-link">Permissions</a>
+                        <a href="{{route('permissions.index')}}" class="sidebar-link">Permissions</a>
                     </li>
                 </ul>
             </li>
