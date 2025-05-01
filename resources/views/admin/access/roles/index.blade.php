@@ -36,16 +36,19 @@
                                         <h6 class="fw-semibold mb-1">{{ $role->name }}</h6>
                                     </td>
                                     <td class="border-bottom-0">
-
                                         @if ($role->name != 'manage_access')
                                             <div class="d-flex">
+                                                <a href="{{ route('roles.showpermissions',$role->id) }}">
+                                                    <button type="button" class="btn btn-secondary btn-md me-2">
+                                                        <i class="ti ti-edit"></i> Assign
+                                                    </button>
+                                                </a>
                                                 <button type="button" class="btn btn-primary btn-md me-2"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#editRoleModal{{ $role->id }}">
                                                     <i class="ti ti-edit"></i> Edit
                                                 </button>
-                                                <form method="POST"
-                                                    action="{{ route('roles.destroy', $role->id) }}"
+                                                <form method="POST" action="{{ route('roles.destroy', $role->id) }}"
                                                     id="delete-form-{{ $role->id }}">
                                                     @csrf
                                                     @method('DELETE')
@@ -65,8 +68,7 @@
                                     aria-labelledby="editRoleLabel{{ $role->id }}" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <form action="{{ route('roles.update', $role->id) }}"
-                                                method="POST">
+                                            <form action="{{ route('roles.update', $role->id) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
 
@@ -79,11 +81,11 @@
 
                                                 <div class="modal-body">
                                                     <div class="mb-3">
-                                                        <label for="role-name-{{ $role->id }}"
-                                                            class="form-label">Role Name</label>
+                                                        <label for="role-name-{{ $role->id }}" class="form-label">Role
+                                                            Name</label>
                                                         <input type="text" name="name" class="form-control"
-                                                            id="role-name-{{ $role->id }}"
-                                                            value="{{ $role->name }}" required>
+                                                            id="role-name-{{ $role->id }}" value="{{ $role->name }}"
+                                                            required>
                                                     </div>
                                                 </div>
 
@@ -110,8 +112,7 @@
     </div>
 
     <!-- create Role Modal -->
-    <div class="modal fade" id="createRoleModal" tabindex="-1" aria-labelledby="createRoleLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="createRoleModal" tabindex="-1" aria-labelledby="createRoleLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="{{ route('roles.store') }}" method="POST">

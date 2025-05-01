@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') - {{ config('app.name') }}</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="shortcut icon" type="image/png" href={{ asset('images/favicon.png') }} />
     <link rel="stylesheet" href={{ asset('libs/bootstrap/dist/css/bootstrap.min.css') }} />
     <link rel="stylesheet" href={{ asset('css/styles.min.css') }} />

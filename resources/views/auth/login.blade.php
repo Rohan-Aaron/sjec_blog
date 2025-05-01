@@ -32,7 +32,7 @@ class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align
             </div>
             <div class="d-flex align-items-center justify-content-between mb-4">
               <div class="form-check">
-                <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
+                <input class="form-check-input primary" type="checkbox" value="" name="remember" id="flexCheckChecked" checked>
                 <label class="form-check-label text-dark" for="flexCheckChecked">
                   Remeber this Device
                 </label>

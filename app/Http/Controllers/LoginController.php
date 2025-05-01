@@ -21,21 +21,34 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        // Attempt to log the user in
-        if (Auth::attempt($request->only('email', 'password'),$request->get('remember'))) {
-            // Redirect to the intended page or home
-            toastr('Welcome '. auth()->user()->name, 'success');
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            toastr()->error('No account found with this email');
+            return back()->withInput()->withErrors([
+                'email' => 'No account found with this email.',
+            ]);
+        }
+
+        if ($user->status != 1) { 
+            toastr()->warning('Your account has been blocked, Contact Admin');
+            return back()->withInput()->withErrors([
+                'email' => 'Your account has been blocked.',
+            ]);
+        }
+
+        if (Auth::attempt($request->only('email', 'password'), $request->get('remember'))) {
+            toastr('Welcome ' . auth()->user()->name, 'success');
             return redirect()->intended('/management');
         }
 
-        // If authentication fails, redirect back with an error message
-        toastr('Invalid credentials', 'error');
-        return redirect()->back()
-            ->withInput($request->only('email', 'remember'))
-            ->withErrors([
-                'email' => 'The provided credentials do not match our records.',
-            ]);
+        // If credentials are invalid
+        toastr()->error('Invalid credentials');
+        return back()->withInput()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
+
 
     public function logout(Request $request)
     {
